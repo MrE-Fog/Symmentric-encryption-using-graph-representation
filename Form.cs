@@ -15,18 +15,14 @@ namespace WindowsFormsApp2
             char[] block = new char[4];
             string text;
             int n, i2, j2, k2, count = 0, prev;
-
             text = textBox1.Text;
-
-
             n = text.Length;
             if (n % 4 == 1)
                 text += "\0\0\0";
             else if (n % 4 == 2)
                 text += "\0\0";
             else if (n % 4 == 3)
-                text += "\0";
-           
+                text += "\0";         
             
             for (i2 = 0; i2 < text.Length; i2 += 4)
             {
@@ -34,10 +30,7 @@ namespace WindowsFormsApp2
                 {
                     block[k2] = text[j2];
                 }
-
-             
-
-         
+                    
                 int[] pt = new int[4];
                 int[,] cipher = new int[5,5];
                 int[,] mult = new int[5, 5];
@@ -61,19 +54,13 @@ namespace WindowsFormsApp2
 
                 char str, ltr;
 
-
-
                 for (a = 0; a < 5; a++)
                     for (b = 0; b < 5; b++)
                         sum = sum + key[a,b];
                 
-
-
                 i=block[0];
                 r[0]=i-sum-96;
-
-           
-
+          
                 for(k=0,j=1 ; k<3 && j<4 ; k++,j++)
                 {
                     p=block[k];
@@ -81,10 +68,7 @@ namespace WindowsFormsApp2
                     r[j]=q-p;
                     
                 }//for loop ends
-
-
-                
-
+              
                 Random rand = new Random();
 
                 for(a=0;a<5;a++)
@@ -117,11 +101,7 @@ namespace WindowsFormsApp2
                             cipher[a,b]=(rand.Next()%150 + 128);
                     }
                 }
-
-
-               
-
-
+             
                 for(a=0;a<5;++a)
                 {
                     for (b = 0; b < 5; ++b)
@@ -134,7 +114,6 @@ namespace WindowsFormsApp2
                     }
                 }
 
-
                 richTextBox1.Text += "Output Matrix:\n\n";
                 for (a = 0; a < 5; ++a)
                 {
@@ -145,9 +124,6 @@ namespace WindowsFormsApp2
                     }
                     richTextBox1.Text += "\n";
                 }
-
-
-
 
                 for (a=0;a<5;++a)
                 {
@@ -160,7 +136,6 @@ namespace WindowsFormsApp2
                         }
                     }
                 }
-
 
                 richTextBox1.Text += "\n Original Matrix:";
 
